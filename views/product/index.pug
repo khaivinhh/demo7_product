@@ -1,0 +1,32 @@
+extend ../layout 
+block content
+    h1 Product list 
+    h1 
+        a(href="/product/create") Create New Product
+    form(action="/product/find_by_name",method="POST") 
+        input(type="text" name="name")
+        input(type="submit")
+    table(border=1)
+        thead 
+            tr 
+                th Id 
+                th Name
+                th Price 
+                th Image 
+                th(colspan='2') Actions 
+        tbody   
+            if products != null 
+                each item in products
+                    tr
+                        td=item._id
+                        td=item.name
+                        td=item.price
+                        td
+                            img(src="/images/"+item.image width="50")
+                        td  
+                            a(href=`/product/update/${item._id}`) Update
+                        td  
+                            a(href=`/product/delete/${item._id}`) Delete
+            else 
+                tr 
+                    td(colspan=5) No Data

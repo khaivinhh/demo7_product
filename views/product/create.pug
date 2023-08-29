@@ -1,0 +1,16 @@
+extends ../layout 
+block content 
+    h1 Create New Product
+    form(action="/product/create" , method="POST", enctype="multipart/form-data")  
+        div 
+            |Name 
+            input(name="name")
+        div 
+            |Price 
+            input(name="price")
+        div 
+            |Image 
+            input(type="file" name="image")
+        div 
+            input(type="submit" , value="Create")
+    
